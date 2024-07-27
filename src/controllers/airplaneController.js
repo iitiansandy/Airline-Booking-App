@@ -29,6 +29,12 @@ async function createAirplane(req, res) {
 };
 
 
+/**
+ * 
+ * @param {*} req /airplanes/:id
+ * @param {*} res 
+ * @returns 
+ */
 async function getAirplanes(req, res) {
     try {
         const airplanes = await AirplaneService.getAirplanes();
@@ -38,9 +44,22 @@ async function getAirplanes(req, res) {
         ErrorResponse.error = error;
         return res.status(error.statusCode).send({ErrorResponse});
     }
-}
+};
+
+
+async function getAirplane(req, res) {
+    try {
+        const airplanes = await AirplaneService.getAirplane(req.params.id);
+        SuccessResponse.data = airplanes;
+        return res.status(StatusCodes.OK).send({SuccessResponse});
+    } catch (error) {
+        ErrorResponse.error = error;
+        return res.status(error.statusCode).send({ErrorResponse});
+    }
+};
 
 module.exports = {
     createAirplane,
-    getAirplanes
+    getAirplanes,
+    getAirplane
 }
