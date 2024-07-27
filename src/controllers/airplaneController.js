@@ -58,8 +58,38 @@ async function getAirplane(req, res) {
     }
 };
 
+
+async function destroyAirplanes(req, res) {
+    try {
+        const airplanes = await AirplaneService.destroyAirplane(req.params.id);
+        SuccessResponse.data = airplanes;
+        return res.status(StatusCodes.OK).send({SuccessResponse});
+    } catch (error) {
+        ErrorResponse.error = error;
+        return res.status(error.statusCode).send({ErrorResponse});
+    }
+};
+
+
+async function updateAirplane(req, res) {
+    try {
+        const airplane = await AirplaneService.updateAirplane(
+            req.params.id,
+            req.body
+        );
+
+        SuccessResponse.data = airplane;
+        return res.status(StatusCodes.OK).send({SuccessResponse});
+    } catch (error) {
+        ErrorResponse.error = error;
+        return res.status(error.statusCode).send({ErrorResponse});
+    }
+}
+
 module.exports = {
     createAirplane,
     getAirplanes,
-    getAirplane
+    getAirplane,
+    destroyAirplanes,
+    updateAirplane
 }
