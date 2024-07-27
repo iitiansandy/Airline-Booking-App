@@ -1,4 +1,5 @@
 module.exports = {
     AirplaneMiddlewares: require('./airplaneMiddleware'),
-    CityMiddlewares: require('./cityMiddleware')
+    CityMiddlewares: require('./cityMiddleware'),
+    AirportMiddlewares: require('./airportMiddleware')
 }
