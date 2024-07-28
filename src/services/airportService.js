@@ -59,7 +59,9 @@ async function destroyAirport(id) {
 
 async function updateAirport(id, data) {
     try {
+        console.log("id data", id, data);
         const airport = await airportRepository.update(id, data);
+        console.log("airport: ", airport);
         return airport;
     } catch (error) {
         if (error.statusCode === StatusCodes.NOT_FOUND) {

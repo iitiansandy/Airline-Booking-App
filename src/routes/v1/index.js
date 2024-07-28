@@ -12,6 +12,9 @@ const cityRoutes = require('./cityRoutes');
 // AIRPORT ROUTES
 const airportRoutes = require('./airportRoutes');
 
+// Flight Routes
+const flightRoutes = require('./flightRoutes');
+
 // console.log("Inside v1 route");
 
 router.use('/airplanes', airplaneRoutes);
@@ -19,6 +22,8 @@ router.use('/airplanes', airplaneRoutes);
 router.use('/cities', cityRoutes);
 
 router.use('/airports', airportRoutes);
+
+router.use('/flights', flightRoutes);
 
 router.get('/info', InfoController.info);
 
