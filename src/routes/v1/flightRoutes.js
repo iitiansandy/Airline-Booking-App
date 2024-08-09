@@ -9,6 +9,9 @@ const { FlightMiddlewares } = require('../../middlewares');
 // ADD AIRPLANES
 router.post('/', FlightMiddlewares.validateCreateRequest, FlightController.createAirport);
 
+// GET FLIGHT
+router.get('/:id', FlightController.getFlight);
+
 // Get All Flights
 router.get('/', FlightController.getAllFlights);
 

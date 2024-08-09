@@ -91,8 +91,22 @@ async function destroyFlight(id) {
 };
 
 
+async function getFlight(id) {
+    try {
+        const flight = await flightRepository.get(id);
+        return flight;
+    } catch (error) {
+        if (error.statusCode === StatusCodes.NOT_FOUND) {
+            throw new AppError("The requested flight not found", error.statusCode);
+        }
+        throw new AppError('Cannot fetch data', StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
+
 module.exports = {
     createFlight,
     getAllFlights,
+    getFlight,
     destroyFlight
 }

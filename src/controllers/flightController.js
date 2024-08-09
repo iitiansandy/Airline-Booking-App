@@ -48,10 +48,10 @@ async function getAllFlights(req, res) {
 };
 
 
-async function getAirport(req, res) {
+async function getFlight(req, res) {
     try {
-        const airport = await AirportService.getAirport(req.params.id);
-        SuccessResponse.data = airport;
+        const flight = await FlightService.getFlight(req.params.id);
+        SuccessResponse.data = flight;
         return res.status(StatusCodes.OK).send({SuccessResponse});
     } catch (error) {
         ErrorResponse.error = error;
@@ -89,6 +89,7 @@ async function updateAirport(req, res) {
 
 module.exports = {
     createAirport,
+    getFlight,
     getAllFlights,
     destroyFlight
 }
