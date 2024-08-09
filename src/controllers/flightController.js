@@ -87,9 +87,28 @@ async function updateAirport(req, res) {
     }
 };
 
+
+async function updateSeats(req, res) {
+    try {
+        const { id } = req.params;
+        const { seats, dec } = req.body;
+        const response = await FlightService.updateSeats({
+            flightId: id,
+            seats, 
+            dec
+        });
+        SuccessResponse.data = response;
+        return res.status(StatusCodes.OK).send({SuccessResponse});
+    } catch (error) {
+        ErrorResponse.error = error;
+        return res.status(error.statusCode).send({ErrorResponse});
+    }
+};
+
 module.exports = {
     createAirport,
     getFlight,
     getAllFlights,
-    destroyFlight
+    destroyFlight,
+    updateSeats
 }

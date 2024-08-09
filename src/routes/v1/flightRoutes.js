@@ -15,6 +15,9 @@ router.get('/:id', FlightController.getFlight);
 // Get All Flights
 router.get('/', FlightController.getAllFlights);
 
+// UPDATE FLIGHT SEATS
+router.patch('/:id/seats', FlightMiddlewares.validateUpdateSeatsRequest, FlightController.updateSeats);
+
 // Delete Flight
 router.delete('/:id', FlightController.destroyFlight);
 
