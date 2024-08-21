@@ -1,5 +1,5 @@
-function addRowLogOnFlights(filghtId) {
-    return `SELECT * from Flights WHERE Flights.id = ${filghtId} FOR UPDATE;`
+function addRowLogOnFlights(flightId) {
+    return `SELECT * from Flights WHERE Flights.id = ${flightId} FOR UPDATE;`
 };
 
 module.exports = {
