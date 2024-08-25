@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 
 app.use('/api', apiRoutes);
+// app.use('/flightService/api', apiRoutes);
 
 app.get('/', (req, res) => {
     res.send("<h1>Airline Booking App is Up and Running</h1>")
